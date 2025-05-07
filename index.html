@@ -1,431 +1,280 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resignificativa - Diabetes y Género</title>
-    <meta name="description" content="Resignificativa: Transformando la conversación sobre diabetes y roles de género en la sociedad actual">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0047B9',
-                        lightBg: '#F7F9FC',
-                        darkText: '#1A1A1A',
-                        secondaryText: '#666666',
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resignificativa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: { 300: '#5eead4', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59' },
+            cyan: { 500: '#06b6d4', 600: '#0891b2' },
+            blue: { 900: '#1e3a8a' },
+            yellow: { 400: '#facc15', 500: '#eab308' }
+          }
         }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-        }
-        
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-    </style>
+      }
+    };
+  </script>
+  <style>
+    .bg-blue-gradient { background-image: url('./assets/bg-blue.png'); background-size: cover; background-position: center; }
+    .bg-beige        { background-image: url('./assets/bg-beige.png'); background-size: cover; background-position: center; }
+    @media (max-width: 768px) {
+      .mobile-menu { display: none; }
+      .mobile-menu.active { display: block; }
+    }
+  </style>
 </head>
-<body class="bg-lightBg text-darkText">
-    <!-- Header -->
-    <header class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between">
-            <div class="flex items-center justify-between">
-                <a href="#" class="flex items-center" aria-label="Resignificativa - Página de inicio">
-                    <span class="text-primary font-bold text-2xl">Resignificativa</span>
-                </a>
-                <button id="menu-toggle" class="md:hidden focus:outline-none focus:ring-2 focus:ring-primary rounded p-1" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </div>
-            <nav id="mobile-menu" class="hidden md:flex flex-col md:flex-row mt-4 md:mt-0 space-y-2 md:space-y-0 md:space-x-6">
-                <a href="#" class="text-darkText hover:text-primary font-medium">Inicio</a>
-                <a href="#foros" class="text-darkText hover:text-primary font-medium">Foros</a>
-                <a href="#investigacion" class="text-darkText hover:text-primary font-medium">Investigación</a>
-                <a href="#blog" class="text-darkText hover:text-primary font-medium">Tips & Blog</a>
-                <a href="#aliados" class="text-darkText hover:text-primary font-medium">Aliados</a>
-                <a href="#contacto" class="text-darkText hover:text-primary font-medium">Contacto</a>
-                <a href="webinars.html" class="text-darkText hover:text-primary font-medium">Webinars</a>
-            </nav>
+<body class="flex flex-col min-h-screen">
+  <!-- Navigation -->
+  <header class="bg-gradient-to-r from-teal-800 to-blue-900 text-white">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-xl font-bold tracking-wider uppercase">Resignificativa</div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#" class="text-sm hover:text-teal-300 transition">Inicio</a>
+        <a href="#" class="text-sm hover:text-teal-300 transition">Investigación</a>
+        <a href="#" class="text-sm hover:text-teal-300 transition">Tips & Blog</a>
+        <a href="#" class="text-sm hover:text-teal-300 transition">Aliados</a>
+        <a href="#" class="text-sm hover:text-teal-300 transition">Contacto</a>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu hidden bg-gradient-to-r from-teal-800 to-blue-900 px-4 pb-4 md:hidden">
+      <nav class="flex flex-col space-y-2">
+        <a href="#" class="text-sm hover:text-teal-300 transition">Inicio</a>
+        <a href="#" class="text-sm hover:text-teal-300 transition">Investigación</a>
+        <a href="#" class="text-sm hover:text-teal-300 transition">Tips & Blog</a>
+        <a href="#" class="text-sm hover:text-teal-300 transition">Aliados</a>
+        <a href="#" class="text-sm hover:text-teal-300 transition">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-white py-16 relative" style="background-image: url('./assets/image-hero-section.png'); background-size: cover; background-position: center;">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 z-10">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">LA CONVERSACIÓN CONTINÚA AQUÍ</h1>
+        <h2 class="text-xl md:text-2xl font-bold text-yellow-400 mb-4">SIGAMOS SANANDO JUNTAS</h2>
+        <p class="text-sm text-teal-300 mb-6">#ReunidosParaSanar #ReSignificandoLaDiabetes</p>
+        <p class="mb-6">Creamos espacios de diálogo para visibilizar y abordar el impacto diferenciado de la diabetes en las mujeres y sus roles sociales.</p>
+        <div class="flex flex-wrap gap-3">
+          <button class="bg-cyan-500 hover:bg-cyan-600 text-white rounded-md h-10 px-4 text-sm font-medium">Únete al diálogo</button>
+          <button class="border border-white hover:bg-white/20 text-white rounded-md h-10 px-4 text-sm font-medium">Únete al diálogo</button>
         </div>
-    </header>
+      </div>
+      <div class="md:w-1/2 mt-8 md:mt-0">
+        <!-- Fondo funcional, sin etiqueta img -->
+      </div>
+    </div>
+  </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="pt-24 md:pt-32 pb-16 md:pb-24 px-4 bg-lightBg">
-            <div class="container mx-auto flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h1 class="text-3xl md:text-5xl font-bold text-darkText mb-4">Transformando la narrativa sobre diabetes y género</h1>
-                    <p class="text-lg md:text-xl text-secondaryText mb-8">Creamos espacios de diálogo para visibilizar y abordar el impacto diferenciado de la diabetes en las mujeres y sus roles sociales.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#foros" class="bg-primary text-white px-6 py-3 rounded-lg font-medium text-center hover:bg-blue-800 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Únete al diálogo</a>
-                        <a href="#investigacion" class="border-2 border-primary text-primary px-6 py-3 rounded-lg font-medium text-center hover:bg-primary hover:text-white transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Últimos avances</a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="./assets/image_1.png" alt="Mujeres diversas en un círculo de diálogo sobre salud" class="rounded-lg shadow-lg max-w-full h-auto" width="600" height="400">
-                </div>
-            </div>
-        </section>
-
-        <!-- Quiénes Somos -->
-        <section class="py-16 px-4 bg-white">
-            <div class="container mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Quiénes Somos</h2>
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/4 flex justify-center mb-6 md:mb-0">
-                        <div class="bg-primary rounded-full p-6 inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="md:w-3/4 md:pl-8">
-                        <p class="text-secondaryText leading-relaxed">
-                            En Resignificativa somos un colectivo interdisciplinario de profesionales de la salud, investigadores y activistas comprometidos con transformar la narrativa sobre la diabetes y su impacto diferenciado por género. Nacimos en 2018 al identificar cómo las mujeres con diabetes enfrentan cargas adicionales derivadas de roles de cuidado, expectativas sociales y barreras sistémicas en el acceso a tratamientos. Trabajamos para visibilizar estas realidades a través de investigación participativa, foros de diálogo y alianzas estratégicas que promueven políticas públicas con perspectiva de género en el abordaje de enfermedades crónicas.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Foros de Diálogo -->
-        <section id="foros" class="py-16 px-4 bg-lightBg">
-            <div class="container mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Foros de Diálogo</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Foro 1 -->
-                    <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:transform hover:scale-105">
-                        <div class="bg-primary/10 p-4 rounded-full inline-block mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Círculos de Escucha</h3>
-                        <p class="text-secondaryText mb-6">Espacios seguros donde mujeres con diabetes comparten experiencias sobre los desafíos específicos que enfrentan en sus roles familiares y laborales.</p>
-                        <a href="#" class="inline-block bg-primary text-white px-4 py-2 rounded font-medium hover:bg-blue-800 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Entrar</a>
-                    </div>
-                    
-                    <!-- Foro 2 -->
-                    <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:transform hover:scale-105">
-                        <div class="bg-primary/10 p-4 rounded-full inline-block mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Talleres Formativos</h3>
-                        <p class="text-secondaryText mb-6">Capacitaciones para profesionales de la salud sobre atención con perspectiva de género en pacientes con diabetes y otras condiciones crónicas.</p>
-                        <a href="#" class="inline-block bg-primary text-white px-4 py-2 rounded font-medium hover:bg-blue-800 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Entrar</a>
-                    </div>
-                    
-                    <!-- Foro 3 -->
-                    <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:transform hover:scale-105">
-                        <div class="bg-primary/10 p-4 rounded-full inline-block mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Incidencia Política</h3>
-                        <p class="text-secondaryText mb-6">Mesas de trabajo con tomadores de decisiones para impulsar políticas públicas que consideren las necesidades específicas de las mujeres con diabetes.</p>
-                        <a href="#" class="inline-block bg-primary text-white px-4 py-2 rounded font-medium hover:bg-blue-800 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Entrar</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Investigación de Punta -->
-        <section id="investigacion" class="py-16 px-4 bg-white">
-            <div class="container mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Investigación de Punta</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Artículo 1 -->
-                    <article class="bg-lightBg rounded-lg overflow-hidden shadow-md">
-                        <div class="relative">
-                            <img src="./assets/image_2.png" alt="Mujer revisando sus niveles de glucosa" class="w-full h-48 object-cover" width="400" height="250">
-                            <span class="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded">Nuevo</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-3">Impacto de la carga de cuidados en el control glucémico de mujeres con diabetes tipo 2</h3>
-                            <p class="text-secondaryText mb-4">Estudio que revela cómo las responsabilidades de cuidado familiar afectan negativamente la adherencia al tratamiento y el autocuidado en mujeres con diabetes, proponiendo intervenciones específicas.</p>
-                            <a href="#" class="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded">Leer más</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Artículo 2 -->
-                    <article class="bg-lightBg rounded-lg overflow-hidden shadow-md">
-                        <div class="relative">
-                            <img src="./assets/image_3.png" alt="Grupo de mujeres en consulta médica" class="w-full h-48 object-cover" width="400" height="250">
-                            <span class="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded">Nuevo</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-3">Barreras de género en el acceso a tecnologías para el manejo de diabetes</h3>
-                            <p class="text-secondaryText mb-4">Análisis de disparidades en la prescripción y acceso a bombas de insulina y sistemas de monitoreo continuo entre hombres y mujeres en Latinoamérica.</p>
-                            <a href="#" class="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded">Leer más</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Artículo 3 -->
-                    <article class="bg-lightBg rounded-lg overflow-hidden shadow-md">
-                        <div class="relative">
-                            <img src="./assets/image_4.png" alt="Profesionales de la salud en capacitación" class="w-full h-48 object-cover" width="400" height="250">
-                            <span class="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded">Nuevo</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-3">Efectividad de programas de apoyo entre pares para mujeres con diabetes gestacional</h3>
-                            <p class="text-secondaryText mb-4">Resultados preliminares de un programa piloto que muestra mejoras significativas en el bienestar emocional y control metabólico mediante redes de apoyo específicas.</p>
-                            <a href="#" class="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded">Leer más</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tips & Blog -->
-        <section id="blog" class="py-16 px-4 bg-lightBg">
-            <div class="container mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Tips & Blog</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Post 1 -->
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
-                         <img src="./assets/image_5.png" alt="Mujer en sesión de yoga" class="w-full h-40 object-cover object-bottom transform group-hover:scale-110 transition-transform duration-300 ease-in-out" width="300" height="200">
-                        <div class="p-4">
-                            <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Nutrición</span>
-                            <h3 class="text-lg font-semibold mt-2 mb-1">Planificación de comidas que respetan tu tiempo y salud</h3>
-                            <div class="flex items-center text-xs text-secondaryText mb-2">
-                                <span>Por Dra. Martínez</span>
-                                <span class="mx-2">•</span>
-                                <time datetime="2023-04-15">15 Abr 2023</time>
-                            </div>
-                            <a href="#" class="text-primary text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded">Leer artículo</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Post 2 -->
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
-                        <img src="./assets/image_6.png" alt="Mujer en sesión de yoga" class="w-full h-40 object-cover object-bottom transform group-hover:scale-110 transition-transform duration-300 ease-in-out" width="300" height="200">
-                        <div class="p-4">
-                            <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Bienestar</span>
-                            <h3 class="text-lg font-semibold mt-2 mb-1">Autocuidado sin culpa: priorizar tu salud no es egoísmo</h3>
-                            <div class="flex items-center text-xs text-secondaryText mb-2">
-                                <span>Por Psic. Rodríguez</span>
-                                <span class="mx-2">•</span>
-                                <time datetime="2023-03-28">28 Mar 2023</time>
-                            </div>
-                            <a href="#" class="text-primary text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded">Leer artículo</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Post 3 -->
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
-                        <img src="./assets/image_7.png" alt="Mujer en consulta médica" class="w-full h-40 object-cover transform group-hover:scale-110 transition-transform duration-300 ease-in-out" width="300" height="200">
-                        <div class="p-4">
-                            <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Tratamiento</span>
-                            <h3 class="text-lg font-semibold mt-2 mb-1">Cómo comunicar efectivamente tus necesidades a tu equipo médico</h3>
-                            <div class="flex items-center text-xs text-secondaryText mb-2">
-                                <span>Por Lic. Gómez</span>
-                                <span class="mx-2">•</span>
-                                <time datetime="2023-03-10">10 Mar 2023</time>
-                            </div>
-                            <a href="#" class="text-primary text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded">Leer artículo</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Post 4 -->
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
-                        <img src="./assets/image_8.png" alt="Familia apoyando a mujer con diabetes" class="w-full h-40 object-cover transform group-hover:scale-110 transition-transform duration-300 ease-in-out" width="300" height="200">
-                        <div class="p-4">
-                            <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Familia</span>
-                            <h3 class="text-lg font-semibold mt-2 mb-1">Redistribución de tareas: involucrar a la familia en tu cuidado</h3>
-                            <div class="flex items-center text-xs text-secondaryText mb-2">
-                                <span>Por Soc. Vázquez</span>
-                                <span class="mx-2">•</span>
-                                <time datetime="2023-02-22">22 Feb 2023</time>
-                            </div>
-                            <a href="#" class="text-primary text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded">Leer artículo</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Partners / Aliados -->
-        <section id="aliados" class="py-16 px-4 bg-white">
-            <div class="container mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Nuestros Aliados</h2>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                    <!-- Logo 1 -->
-                    <div class="flex items-center justify-center p-4 bg-lightBg rounded-lg">
-                        <img src="./assets/logo_1.png" alt="Logo Federación Internacional de Diabetes" class="max-h-12" width="120" height="60">
-                    </div>
-                    
-                    <!-- Logo 2 -->
-                    <div class="flex items-center justify-center p-4 bg-lightBg rounded-lg">
-                        <img src="./assets/logo_2.png" alt="Logo ONU Mujeres" class="max-h-12" width="120" height="60">
-                    </div>
-                    
-                    <!-- Logo 3 -->
-                    <div class="flex items-center justify-center p-4 bg-lightBg rounded-lg">
-                        <img src="./assets/logo_3.png" alt="Logo Ministerio de Salud" class="max-h-12" width="120" height="60">
-                    </div>
-                   
-                    <!-- Logo 4 -->
-                    <div class="flex items-center justify-center p-4 bg-lightBg rounded-lg">
-                        <img src="./assets/logo_4.png" alt="Logo Fundación para la Diabetes" class="max-h-12" width="120" height="60">
-                    </div>
-                    
-                    <!-- Logo 5 -->
-                    <div class="flex items-center justify-center p-4 bg-lightBg rounded-lg">
-                        <img src="./assets/logo_5.png" alt="Logo Asociación de Endocrinología" class="max-h-12" width="120" height="60">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Suscripción -->
-        <section class="py-16 px-4 bg-primary text-white">
-            <div class="container mx-auto text-center">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4">Únete a nuestra comunidad</h2>
-                <p class="text-lg mb-8 max-w-2xl mx-auto">Recibe información actualizada sobre diabetes y género, invitaciones a eventos y recursos exclusivos para nuestros suscriptores.</p>
-                <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
-                    <div class="flex-grow">
-                        <label for="email" class="sr-only">Correo electrónico</label>
-                        <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required class="w-full px-4 py-3 rounded-lg text-darkText focus:outline-none focus:ring-2 focus:ring-blue-300" aria-describedby="email-terms">
-                    </div>
-                    <button type="submit" class="bg-white text-primary px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300">Suscríbete</button>
-                </form>
-                <p id="email-terms" class="text-sm mt-4 text-blue-100">Al suscribirte, aceptas nuestra política de privacidad y términos de uso.</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer id="contacto" class="bg-darkText text-white py-12 px-4">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Columna 1: Acerca de -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Acerca de Resignificativa</h3>
-                    <p class="text-gray-400 text-sm">Transformando la narrativa sobre diabetes y roles de género a través del diálogo, la investigación y la acción colectiva.</p>
-                </div>
-                
-                <!-- Columna 2: Enlaces rápidos -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Enlaces rápidos</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Inicio</a></li>
-                        <li><a href="#foros" class="text-gray-400 hover:text-white transition duration-300">Foros</a></li>
-                        <li><a href="#investigacion" class="text-gray-400 hover:text-white transition duration-300">Investigación</a></li>
-                        <li><a href="#blog" class="text-gray-400 hover:text-white transition duration-300">Tips & Blog</a></li>
-                        <li><a href="#aliados" class="text-gray-400 hover:text-white transition duration-300">Aliados</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Columna 3: Contacto -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Contacto</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li class="flex items-start">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            <span class="text-gray-400">info@resignificativa.org</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                            <span class="text-gray-400">+123 456 7890</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            <span class="text-gray-400">Av. Principal 123, Ciudad</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Columna 4: Redes sociales -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Síguenos en Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Síguenos en Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Síguenos en Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Síguenos en LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-gray-400 text-sm">&copy; <script>document.write(new Date().getFullYear())</script> Resignificativa. Todos los derechos reservados.</p>
-            </div>
+  <!-- Quienes Somos -->
+  <section class="py-16 bg-beige">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">QUIÉNES SOMOS</h2>
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/4 flex justify-center">
+          <div class="bg-teal-800 rounded-full p-4 w-32 h-32 flex items-center justify-center">
+            <span class="text-white text-4xl font-bold">RR</span>
+          </div>
         </div>
-    </footer>
+        <div class="md:w-3/4 space-y-4">
+          <p>Somos un espacio que nació del dolor, pero también del deseo profundo de sanar juntas. <strong>Resignificativa</strong> es un lugar seguro, una comunidad que se construye desde lazos que se reconocen y acompañan.</p>
+          <p>Este lugar sigue latiendo más allá del evento. Es una red que crece con cada experiencia compartida, un refugio digital para resignificar lo vivido y recordar que no estamos solas.</p>
+          <p class="font-semibold">Porque cuando nos entendemos, sanamos juntas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Menú móvil toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuToggle.addEventListener('click', function() {
-                const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
-                menuToggle.setAttribute('aria-expanded', !expanded);
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Cerrar menú al hacer clic en un enlace (en móvil)
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth < 768) {
-                        mobileMenu.classList.add('hidden');
-                        menuToggle.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
-        });
-    </script>
+  <!-- Foros de Diálogo -->
+  <section class="py-16 bg-blue-gradient">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-white mb-12">FOROS DE DIÁLOGO</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 flex flex-col items-center text-center">
+          <div class="bg-teal-800 p-4 rounded-full mb-4">
+            <!-- SVG aquí -->
+          </div>
+          <h3 class="text-xl font-bold mb-3">Círculos de escucha</h3>
+          <p class="mb-6 text-sm">Espacios seguros para hablar desde lo que duele, lo que pesa y lo que libera.</p>
+          <button class="bg-cyan-500 hover:bg-cyan-600 text-white mt-auto rounded-md h-10 px-4 text-sm font-medium">Entrar</button>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 flex flex-col items-center text-center">
+          <div class="bg-teal-800 p-4 rounded-full mb-4">
+            <!-- SVG aquí -->
+          </div>
+          <h3 class="text-xl font-bold mb-3">Talleres de Poder y Conocimiento</h3>
+          <p class="mb-6 text-sm">Aprende sobre autocuidado, derechos y salud desde tu experiencia.</p>
+          <button class="bg-cyan-500 hover:bg-cyan-600 text-white mt-auto rounded-md h-10 px-4 text-sm font-medium">Entrar</button>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white rounded-lg shadow-sm p-6 flex flex-col items-center text-center">
+          <div class="bg-teal-800 p-4 rounded-full mb-4">
+            <!-- SVG aquí -->
+          </div>
+          <h3 class="text-xl font-bold mb-3">Voces que transforman</h3>
+          <p class="mb-6 text-sm">Impulsa cambios reales y políticas públicas inclusivas.</p>
+          <button class="bg-cyan-500 hover:bg-cyan-600 text-white mt-auto rounded-md h-10 px-4 text-sm font-medium">Entrar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Investigación -->
+  <section class="py-16 bg-beige">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">INVESTIGACIÓN</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-900 rounded-lg overflow-hidden shadow-md">
+          <div class="relative">
+            <img src="./assets/image_4.png" alt="Programas de apoyo" class="w-full">
+            <div class="absolute top-2 left-2 bg-yellow-500 text-xs font-bold px-2 py-1 rounded">NUEVO</div>
+          </div>
+          <div class="p-6 text-white">
+            <h3 class="text-lg font-bold mb-3">Programas de apoyo entre pares para mujeres con diabetes gestacional</h3>
+            <p class="text-sm text-gray-300 mb-4">Resultados preliminares de un programa piloto que mide impacto emocional y clínico.</p>
+            <button class="border border-white hover:bg-white/10 rounded-md h-10 px-4 inline-flex items-center justify-center text-sm font-medium">Leer más</button>
+          </div>
+        </div>
+        <div class="bg-gray-900 rounded-lg overflow-hidden shadow-md">
+          <div class="relative">
+            <img src="./assets/image_3.png" alt="Barreras de género" class="w-full">
+            <div class="absolute top-2 left-2 bg-yellow-500 text-xs font-bold px-2 py-1 rounded">NUEVO</div>
+          </div>
+          <div class="p-6 text-white">
+            <h3 class="text-lg font-bold mb-3">Barreras de género en el acceso a tecnologías</h3>
+            <p class="text-sm text-gray-300 mb-4">Análisis de desigualdades en insulina y monitoreo continuo en Latinoamérica.</p>
+            <button class="border border-white hover:bg-white/10 rounded-md h-10 px-4 inline-flex items-center justify-center text-sm font-medium">Leer más</button>
+          </div>
+        </div>
+        <div class="bg-gray-900 rounded-lg overflow-hidden shadow-md">
+          <div class="relative">
+            <img src="./assets/image_2.png" alt="Impacto de la carga" class="w-full">
+          </div>
+          <div class="p-6 text-white">
+            <h3 class="text-lg font-bold mb-3">Impacto de la carga en el control de mujeres con diabetes tipo 2</h3>
+            <p class="text-sm text-gray-300 mb-4">Exploración sobre cómo el trabajo doméstico no remunerado afecta el tiempo para el autocuidado y los resultados.</p>
+            <button class="border border-white hover:bg-white/10 rounded-md h-10 px-4 inline-flex items-center justify-center text-sm font-medium">Leer más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tips & Blog -->
+  <section class="py-16 bg-blue-gradient">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-white mb-12">TIPS & BLOG</h2>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://via.placeholder.com/300x150" alt="Planificación de comidas" class="w-full">
+          <div class="p-4">
+            <h3 class="text-gray-900 font-bold mb-2 text-sm">Planificación de comidas con poco tiempo y salud: versión fácil</h3>
+            <button class="bg-cyan-500 hover:bg-cyan-600 text-white w-full mt-2 rounded-md h-9 px-3 text-sm font-medium">Leer post</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://via.placeholder.com/300x150" alt="Autocuidado sin culpa" class="w-full">
+          <div class="p-4">
+            <h3 class="text-gray-900 font-bold mb-2 text-sm">Autocuidado sin culpa: priorizar tu salud no es egoísmo</h3>
+            <button class="bg-cyan-500 hover:bg-cyan-600 text-white w-full mt-2 rounded-md h-9 px-3 text-sm font-medium">Leer post</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://via.placeholder.com/300x150" alt="Cómo comunicar a tu médico" class="w-full">
+          <div class="p-4">
+            <h3 class="text-gray-900 font-bold mb-2 text-sm">Cómo comunicar efectivamente tus necesidades a tu médico</h3>
+            <button class="bg-cyan-500 hover:bg-cyan-600 text-white w-full mt-2 rounded-md h-9 px-3 text-sm font-medium">Leer post</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://via.placeholder.com/300x150" alt="Redistribución de tareas" class="w-full">
+          <div class="p-4">
+            <h3 class="text-gray-900 font-bold mb-2 text-sm">Redistribución de tareas: involucrar a la familia en tu cuidado</h3>
+            <button class="bg-cyan-500 hover:bg-cyan-600 text-white w-full mt-2 rounded-md h-9 px-3 text-sm font-medium">Leer post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nuestros Aliados -->
+  <section class="py-16 bg-beige">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-12">NUESTROS ALIADOS</h2>
+      <div class="flex flex-wrap justify-center items-center gap-12 text-gray-700">
+        <div class="font-serif italic text-xl">Mariposa</div>
+        <div class="font-bold text-xl">Breakthrough<sup>TM</sup> <span class="text-sm">Diabetes</span></div>
+        <div class="font-mono text-xl">OPD</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-12 bg-blue-gradient text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold mb-4 text-white">ÚNETE A NUESTRA COMUNIDAD</h2>
+      <p class="mb-6 text-white max-w-2xl mx-auto">Recibe información actualizada sobre diabetes y género, invitaciones a eventos y recursos exclusivos.</p>
+      <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+        <input type="email" placeholder="Tu correo electrónico" class="flex-1 h-10 rounded-md border border-white/40 bg-white/20 px-3 text-white placeholder-white/70 focus:ring-2 focus:ring-offset-2" />
+        <button class="bg-white text-blue-900 hover:bg-gray-100 rounded-md h-10 px-4 text-sm font-medium">Suscríbete</button>
+      </div>
+      <p class="text-xs mt-4 text-white/70">Al suscribirte aceptas nuestra política de privacidad y términos de uso.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-blue-gradient text-white">
+    <div class="container mx-auto px-4 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="font-bold mb-4">Acerca de Resignificativa</h3>
+        <p class="text-sm text-gray-300">Una comunidad para mujeres con diabetes que busca generar espacios de diálogo, investigación y acompañamiento.</p>
+      </div>
+      <div>
+        <h3 class="font-bold mb-4">Enlaces rápidos</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="#" class="hover:text-teal-300">Inicio</a></li>
+          <li><a href="#" class="hover:text-teal-300">Investigación</a></li>
+          <li><a href="#" class="hover:text-teal-300">Tips & Blog</a></li>
+          <li><a href="#" class="hover:text-teal-300">Aliados</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold mb-4">Contacto</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="mailto:info@resignificativa.org" class="hover:text-teal-300">info@resignificativa.org</a></li>
+          <li><a href="tel:+1234567890" class="hover:text-teal-300">+123 456 7890</a></li>
+          <li><a href="#" class="hover:text-teal-300">Av. Principal 123, Ciudad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold mb-4">Síguenos</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="#" class="hover:text-teal-300">Facebook</a></li>
+          <li><a href="#" class="hover:text-teal-300">Instagram</a></li>
+          <li><a href="#" class="hover:text-teal-300">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      btn.addEventListener('click', () => menu.classList.toggle('active'));
+    });
+  </script>
 </body>
 </html>
