@@ -181,7 +181,6 @@
 
       </div>
       <div class="md:w-1/2 mt-8 md:mt-0">
-        <!-- Fondo funcional, sin etiqueta img -->
       </div>
     </div>
   </section>
@@ -503,17 +502,15 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-       // Toggle menú móvil (igual que antes)
        const btn = document.getElementById('mobile-menu-button');
       const menu = document.getElementById('mobile-menu');
       btn.addEventListener('click', () => menu.classList.toggle('view'));
-      // Sólo desktop
+
       if (!window.matchMedia('(min-width: 768px)').matches) return;
 
       const links = document.querySelectorAll('.nav-link');
       const sections = Array.from(document.querySelectorAll('section[id], header[id], footer[id]'));
 
-      // Función para resaltar el enlace activo
       function highlightCurrent() {
         const scrollPos = window.scrollY + window.innerHeight / 2;
         let currentId = sections[0].id;
@@ -533,7 +530,6 @@
         });
       }
 
-      // Intercepta clicks para centrar la sección
       links.forEach(link => {
         link.addEventListener('click', e => {
           e.preventDefault();
@@ -541,7 +537,6 @@
           const sec = document.getElementById(targetId);
           if (!sec) return;
 
-          // Calcula posición para centrar la sección
           const top = sec.offsetTop - (window.innerHeight - sec.offsetHeight) / 2;
 
           window.scrollTo({
@@ -551,7 +546,6 @@
         });
       });
 
-      // Inicializa resaltado y actualízalo al hacer scroll
       highlightCurrent();
       window.addEventListener('scroll', highlightCurrent);
 
