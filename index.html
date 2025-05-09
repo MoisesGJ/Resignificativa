@@ -4,6 +4,8 @@
   <head>
     <meta charset="UTF-8">
 
+    <base href="/">
+
     <!-- SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resignificativa</title>
@@ -23,7 +25,7 @@
     <meta property="og:description"
       content="Resignificativa es una comunidad que visibiliza el impacto de la diabetes en mujeres a través de diálogo, investigación, foros de apoyo y recursos colaborativos.">
     <meta property="og:url" content="https://resignificativa.social/">
-    <meta property="og:image" content="https://resignificativa.social/assets/image-hero-section.png">
+    <meta property="og:image" content="https://resignificativa.social/assets/Logo_Resignificativa_section.svg">
     <meta property="og:site_name" content="Resignificativa">
 
     <!-- Twitter Card -->
@@ -31,7 +33,7 @@
     <meta name="twitter:title" content="Resignificativa: Diálogo e Investigación sobre Diabetes en Mujeres">
     <meta name="twitter:description"
       content="Resignificativa es una comunidad que visibiliza el impacto de la diabetes en mujeres a través de diálogo, investigación, foros de apoyo y recursos colaborativos.">
-    <meta name="twitter:image" content="https://resignificativa.social/assets/image-hero-section.png">
+    <meta name="twitter:image" content="https://resignificativa.social/assets/Logo_Resignificativa_section.svg">
     <meta name="twitter:site" content="@Resignificativa">
 
     <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
@@ -45,7 +47,7 @@
     <link rel="stylesheet" href="./output.css">
   </head>
 
-  <body class="flex flex-col min-h-screen pt-20">
+  <body class="flex flex-col min-h-screen pt-20 bg-beige">
 
     <!-- Navigation -->
     <header class="fixed top-0 left-0 w-full bg-blue-900 text-white font-medium z-50 h-20">
@@ -407,7 +409,7 @@
     </div>
     <p id="subscription-message" class="text-xs mt-4 font-book text-white/70"></p>
     <p class="text-xs mt-4 font-book text-white/70">
-      Al suscribirte aceptas nuestro <a href="/aviso-legal.html" class="underline">aviso legal</a>.
+      Al suscribirte aceptas nuestro <a href="/aviso-legal" class="underline">aviso legal</a>.
     </p>
   </div>
     </section>
@@ -427,7 +429,7 @@
             <li><a href="#investigacion" class="hover:text-teal">Investigación</a></li>
             <li><a href="#tips-blog" class="hover:text-teal">Tips & Blog</a></li>
             <li><a href="#aliados" class="hover:text-teal">Aliados</a></li>
-             <li><a href="/aviso-legal.html" class="hover:text-teal">Aviso legal</a></li>
+             <li><a href="/aviso-legal" class="hover:text-teal">Aviso legal</a></li>
           </ul>
         </div>
         <div>
@@ -449,129 +451,7 @@
     </footer>
 
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('view'));
-         menu.querySelectorAll('a').forEach(link =>
-    link.addEventListener('click', () => menu.classList.remove('view'))
-  );
-
-        if (!window.matchMedia('(min-width: 768px)').matches) return;
-
-        const links = document.querySelectorAll('.nav-link');
-        const sections = Array.from(document.querySelectorAll('section[id], header[id], footer[id]'));
-
-        function highlightCurrent() {
-          const scrollPos = window.scrollY + window.innerHeight / 2;
-          let currentId = sections[0].id;
-
-          for (const sec of sections) {
-            if (sec.offsetTop <= scrollPos) {
-              currentId = sec.id;
-            }
-          }
-
-          links.forEach(link => {
-            if (link.dataset.target === currentId) {
-              link.classList.add('text-yellow-400', 'font-semibold');
-            } else {
-              link.classList.remove('text-yellow-400', 'font-semibold');
-            }
-          });
-        }
-
-        links.forEach(link => {
-          link.addEventListener('click', e => {
-            e.preventDefault();
-            const targetId = link.dataset.target;
-            const sec = document.getElementById(targetId);
-            if (!sec) return;
-
-            const top = sec.offsetTop - (window.innerHeight - sec.offsetHeight) / 2;
-
-            window.scrollTo({
-              top: Math.max(0, top),
-              behavior: 'smooth'
-            });
-          });
-        });
-
-        highlightCurrent();
-        window.addEventListener('scroll', highlightCurrent);
-
-
-      });
-    </script>
-
-    <script>
-  const btn = document.getElementById('subscribe-button');
-  const input = document.getElementById('email-input');
-  const msg  = document.getElementById('subscription-message');
-
-  function showTempMessage(text) {
-    msg.textContent = text;
-    setTimeout(() => msg.textContent = '', 3000);
-  }
-
-  async function fetchIPAndLocation() {
-    try {
-      const res = await fetch('https://ipapi.co/json/');
-      if (!res.ok) throw new Error();
-      const data = await res.json();
-      return {
-        ip: data.ip,
-        location: `${data.city}, ${data.region}, ${data.country_name}`
-      };
-    } catch {
-      return { ip: 'desconocida', location: 'desconocida' };
-    }
-  }
-
-  btn.addEventListener('click', async () => {
-    if (!input.checkValidity()) {
-      showTempMessage('Por favor ingresa un correo válido.');
-      return;
-    }
-
-    btn.disabled = true;
-    showTempMessage('Enviando…');
-
-    const email = input.value.trim();
-    const now = new Date();
-    const fecha = now.toLocaleDateString('es-MX', {
-      timeZone: 'America/Mexico_City',
-      day: '2-digit', month: '2-digit', year: 'numeric'
-    });
-    const hora = now.toLocaleTimeString('es-MX', {
-      timeZone: 'America/Mexico_City',
-      hour: '2-digit', minute: '2-digit', hour12: false
-    });
-
-    const { ip, location } = await fetchIPAndLocation();
-
-    try {
-      const res = await fetch(
-        'https://resignificativa-default-rtdb.firebaseio.com/subscribers.json',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, fecha, hora, ip, location })
-        }
-      );
-      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-
-      showTempMessage('Correo recibido. ¡Gracias por suscribirte!');
-      input.value = '';
-    } catch (e) {
-      console.error(e);
-      showTempMessage('Error al suscribir. Intenta de nuevo.');
-    } finally {
-      btn.disabled = false;
-    }
-  });
-</script>
+    <script src="./main.js"></script>
 
   </body>
 </html>
