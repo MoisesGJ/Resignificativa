@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+:root {
+    --font-gibson: 'canada-type-gibson', sans-serif;
+}
+
+@layer utilities {
+    .font-book {
+        font-family: var(--font-gibson);
+        font-weight: 300;
+    }
+
+    .font-regular {
+        font-family: var(--font-gibson);
+        font-weight: 400;
+    }
+
+    .font-medium {
+        font-family: var(--font-gibson);
+        font-weight: 500;
+    }
+
+    .font-semibold {
+        font-family: var(--font-gibson);
+        font-weight: 600;
+    }
+}
+
+@theme {
+    --color-teal: #0383b8;
+    --color-cyan-500: #50c2fa;
+    --color-yellow-400: #ffb742;
+    --color-blue-900: #002536;
+    --color-beige: #ebeade;
+
+    --font-book: "Gibson Book", sans-serif;
+    --font-regular: "Gibson Regular", sans-serif;
+    --font-medium: "Gibson Medium", sans-serif;
+    --font-semibold: "Gibson Semibold", sans-serif;
+}
+
+.bg-blue-gradient {
+    background-image: url('./assets/Edited/bg-blue.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 4rem;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .mobile-menu.view {
+        display: block !important;
+    }
+}
+
+
+/* ========= WebKit browsers (Chrome, Safari, Edge) ========= */
+::-webkit-scrollbar {
+    width: 16px;
+    background: #ebeade;
+}
+
+::-webkit-scrollbar-track {
+    background: #ebeade;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #002536;
+    border-radius: 20px;
+}
+
+/* ========= Firefox ========= */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #002536 #ebeade;
+}
+
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+body {
+    min-width: 243px !important;
+}
+
+input[type="email"]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}

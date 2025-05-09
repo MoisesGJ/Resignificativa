@@ -1,558 +1,577 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resignificativa</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            teal: '#0383b8',
-            cyan: { 500: '#50c2fa', 600: '#0891b2' },
-            blue: { 900: '#002536' },
-            yellow: { 400: '#ffb742' },
-            beige: '#ebeade',
-          },
-          fontFamily: {
-            book: ['Gibson Book', 'sans-serif'],
-            regular: ['Gibson Regular', 'sans-serif'],
-            medium: ['Gibson Medium', 'sans-serif'],
-            semibold: ['Gibson Semibold', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    /* Gibson Book */
-    @font-face {
-      font-family: 'Gibson Book';
-      src: url('./assets/Fonts/gibson-book.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
+  <head>
+    <meta charset="UTF-8">
 
-    @font-face {
-      font-family: 'Gibson Book';
-      src: url('./assets/Fonts/gibson-bookitalic.woff2') format('woff2');
-      font-weight: normal;
-      font-style: italic;
-    }
+    <!-- SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resignificativa</title>
+    <meta name="description"
+      content="Resignificativa es una comunidad que visibiliza el impacto de la diabetes en mujeres a través de diálogo, investigación, foros de apoyo y recursos colaborativos.">
 
-    /* Gibson Regular */
-    @font-face {
-      font-family: 'Gibson Regular';
-      src: url('./assets/Fonts/gibson-regular.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
+    <!-- Palabras clave -->
+    <meta name="keywords"
+      content="diabetes, mujeres, género, salud, comunidad, foros de diálogo, investigación, apoyo, Resignificativa">
 
-    @font-face {
-      font-family: 'Gibson Regular';
-      src: url('./assets/Fonts/gibson-italic.woff2') format('woff2');
-      font-weight: normal;
-      font-style: italic;
-    }
+    <!-- Canonical -->
+    <link rel="canonical" href="https://resignificativa.social/" />
 
-    /* Gibson Medium */
-    @font-face {
-      font-family: 'Gibson Medium';
-      src: url('./assets/Fonts/gibson-medium.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Resignificativa: Diálogo e Investigación sobre Diabetes en Mujeres">
+    <meta property="og:description"
+      content="Resignificativa es una comunidad que visibiliza el impacto de la diabetes en mujeres a través de diálogo, investigación, foros de apoyo y recursos colaborativos.">
+    <meta property="og:url" content="https://resignificativa.social/">
+    <meta property="og:image" content="https://resignificativa.social/assets/image-hero-section.png">
+    <meta property="og:site_name" content="Resignificativa">
 
-    @font-face {
-      font-family: 'Gibson Medium';
-      src: url('./assets/Fonts/gibson-mediumitalic.woff2') format('woff2');
-      font-weight: normal;
-      font-style: italic;
-    }
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Resignificativa: Diálogo e Investigación sobre Diabetes en Mujeres">
+    <meta name="twitter:description"
+      content="Resignificativa es una comunidad que visibiliza el impacto de la diabetes en mujeres a través de diálogo, investigación, foros de apoyo y recursos colaborativos.">
+    <meta name="twitter:image" content="https://resignificativa.social/assets/image-hero-section.png">
+    <meta name="twitter:site" content="@Resignificativa">
 
-    /* Gibson Semibold */
-    @font-face {
-      font-family: 'Gibson Semibold';
-      src: url('./assets/Fonts/gibson-semibold.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Resignificativa" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
-    .bg-blue-gradient {
-      background-image: url('./assets/Edited/bg-blue.webp');
-      background-size: cover;
-      background-position: center;
-    }
+    <link rel="stylesheet" href="https://use.typekit.net/vtf3wxl.css">
+    <link rel="stylesheet" href="./output.css">
+  </head>
 
-   @media (max-width: 768px) {
-  .mobile-menu {
-    display: none;
-  }
-  .mobile-menu.view {
-    display: block !important;
-  }
-}
+  <body class="flex flex-col min-h-screen pt-20">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full bg-blue-900 text-white font-medium z-50 h-20">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center h-full">
+        <img src="./assets/Logo_Resignificativa_navbar.svg" alt="Logo" class="h-16" />
+
+        <nav id="desktop-nav" class="hidden md:flex space-x-6">
+          <a href="#inicio" data-target="inicio" class="nav-link text-md transition">Inicio</a>
+          <a href="#foros" data-target="foros" class="nav-link text-md transition">Foros</a>
+          <a href="#investigacion" data-target="investigacion" class="nav-link text-md transition">Investigación</a>
+          <a href="#tips-blog" data-target="tips-blog" class="nav-link text-md transition">
+            Tips & Blog
+          </a>
+          <a href="#aliados" data-target="aliados" class="nav-link text-md transition">Aliados</a>
+          <a href="#newsletter" data-target="newsletter" class="nav-link text-md transition">Newsletter</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="mobile-menu bg-blue-900 px-4 pb-4 md:hidden">
+        <hr class="border-beige mb-4" />
+        <nav class="flex flex-col mb-2 space-y-3">
+          <a href="#inicio" class="text-lg hover:text-yellow-400 transition">Inicio</a>
+          <a href="#foros" class="text-lg hover:text-yellow-400 transition">Foros</a>
+          <a href="#investigacion" class="text-lg hover:text-yellow-400 transition">Investigación</a>
+          <a href="#tips-blog" class="text-lg hover:text-yellow-400 transition">Tips &
+            Blog</a>
+          <a href="#aliados" class="text-lg hover:text-yellow-400 transition">Aliados</a>
+          <a href="#newsletter" class="text-lg hover:text-yellow-400 transition">Newsletter</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="text-white py-16 relative">
+      <div class="absolute inset-0 overflow-hidden">
+        <img src="./assets/Edited/image-hero-section.webp" alt="Hero"
+          class="w-full h-full object-cover object-[80%_10%] scale-110 md:scale-100 md:object-[90%_70%] lg:object-[90%_90%]" />
+      </div>
+      <div class="absolute inset-0 bg-gray-800/50 lg:bg-transparent"></div>
+      <div class="container mx-auto px-4 flex flex-col md:flex-row items-start">
+        <div class="md:w-1/2 z-10 md:ps-12 xxl:ps-4">
+          <div class="md:block md:w-[30rem]">
+            <div class="md:leading-[3.7rem]">
+              <h1 class="font-semibold text-[29.5px] sm:text-[36px] md:text-[50px] font-bold">LA CONVERSACIÓN</h1>
+              <h1 class="font-semibold text-[34px] sm:text-[42px] md:text-[59px] font-bold tracking-normal">CONTINÚA
+                AQUÍ
+              </h1>
+            </div>
+            <h2
+              class="font-semibold text-[20px] sm:text-[25px] md:text-[34.5px] font-bold text-yellow-400 md:-mt-[10px] mb-4">
+              SIGAMOS SANANDO JUNTAS
+            </h2>
+            <p class="font-book text-[13px] md:text-[22px] italic text-cyan-500 mb-8">#ReunidosParaSanar
+              #ReSignificandoLaDiabetes</p>
+            <p class="font-book mb-6 w-[18rem] sm:w-[20.5rem] md:text-[22px] xs:w-[20rem] md:w-full leading-[1.7rem]">
+              Creamos espacios de diálogo para visibilizar y
+              abordar el impacto diferenciado
+              de la diabetes en las mujeres y sus roles sociales.</p>
+            <div class="flex flex-wrap gap-3 font-book">
+              <button class="bg-cyan-500 hover:bg-cyan-600 text-black rounded-md h-10 px-4 text-sm">Únete al
+                diálogo</button>
+              <button
+                class="border-[3px] border-cyan-500 hover:bg-white/20 text-cyan-500 rounded-md h-10 px-4 text-sm">Investigación</button>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="md:w-1/2 mt-8 md:mt-0">
+        </div>
+      </div>
+    </section>
+
+    <!-- Quienes Somos -->
+    <section id="quienes-somos" class="py-16 bg-beige">
+      <div class="container mx-auto px-8 text-blue">
+        <h2 class="text-3xl text-blue-900 font-semibold text-center mb-12">QUIÉNES SOMOS</h2>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0">
+          <div class="md:w-1/4 flex justify-center">
+            <div class="bg-blue-900 rounded-full p-4 w-36 md:w-44 h-auto flex items-center justify-center">
+              <img src="./assets/Logo_Resignificativa_section.svg">
+
+            </div>
+          </div>
+          <div class="md:w-3/4 space-y-4 font-book max-w-2xl md:text-lg leading-[24px]">
+            <p>Somos un espacio que nació del dolor, pero también del deseo profundo de sanar juntas. Resignificativa no
+              es solo un evento: es una comunidad viva de mujeres con diabetes tipo 1 que se reconocen, se escuchan y se
+              acompañan. Aquí todo tiene valor. Nos mueve la necesidad de ser vistas no solo como pacientes, sino como
+              mujeres completas, con ciclos, emociones, preguntas y luchas que merecen espacio y respeto.</p>
+
+            <p>Este lugar sigue latiendo más allá del evento. Es una red que crece con cada conversación, con cada
+              experiencia compartida. Un refugio digital donde podemos seguir resignificando lo que hemos vivido,
+              reaprender lo que merecemos y recordar que no estamos solas.</p>
+
+            <p class="font-medium">Porque cuando nos entendemos, sanamos juntas.</p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foros de Diálogo -->
+    <section id="foros" class="py-16 bg-blue-gradient">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-center text-beige mb-12">FOROS DE DIÁLOGO</h2>
+        <div class="flex flex-wrap justify-center text-start gap-4">
+          <!-- Card 1 -->
+          <div class="bg-beige h-80 rounded-lg shadow-2xl flex flex-col w-full sm:w-72">
+            <div class="px-6 pt-6 pb-4 flex-1 flex flex-col items-start text-center">
+              <div class="w-full">
+                <div class="bg-blue-900 p-3 rounded-full mb-4 w-16 h-16 flex items-center justify-center">
+                  <img src="./assets/icon-one.svg" alt="">
+                </div>
+              </div>
+              <h3 class="text-xl font-medium text-blue-900 mb-2 text-start">Círculos de escucha</h3>
+              <p class="text-sm text-[#0c2731] mb-4 flex-1 text-start font-book">
+                Espacios seguros para hablar desde lo que duele, lo que pesa y lo que libera. Aquí, cada historia
+                encuentra eco y cada palabra importa.
+              </p>
+              <button class="bg-cyan-500 hover:bg-cyan-600 text- rounded-xl h-8 px-3 text-lg font-book w-24">
+                Entrar
+              </button>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-beige h-80 rounded-lg shadow-2xl flex flex-col w-full sm:w-72">
+            <div class="px-6 pt-6 pb-4 flex-1 flex flex-col items-start text-center">
+              <div class="w-full">
+                <div class="bg-blue-900 p-3 rounded-full mb-4 w-16 h-16 flex items-center justify-center">
+                  <img src="./assets/icon-two.svg" alt="">
+                </div>
+              </div>
+              <h3 class="text-xl font-medium text-blue-900 mb-2 text-start">Talleres de Poder y Conocimiento</h3>
+              <p class="text-sm text-[#0c2731] mb-4 flex-1 text-start font-book">
+                Aquí aprendemos a cuidarnos, cuestionar lo aprendido y reapropiarnos de nuestra salud desde lo que sí
+                somos.
+              </p>
+              <button class="bg-cyan-500 hover:bg-cyan-600 text- rounded-xl h-8 px-3 text-lg font-book w-24">
+                Entrar
+              </button>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-beige h-80 rounded-lg shadow-2xl flex flex-col w-full sm:w-72">
+            <div class="px-6 pt-6 pb-4 flex-1 flex flex-col items-start text-center">
+              <div class="w-full">
+                <div class="bg-blue-900 p-3 rounded-full mb-4 w-16 h-16 flex items-center justify-center">
+                  <img src="./assets/icon-three.svg" alt="">
+                </div>
+              </div>
+              <h3 class="text-xl font-medium text-blue-900 mb-2 text-start">Voces que transforman (Incidencia Colectiva)
+              </h3>
+              <p class="text-sm text-[#0c2731] mb-4 flex-1 text-start font-book">
+                Espacios para imaginar y construir cambios reales. Conversaciones que incomodan, que exigen y que
+                siembran.
+              </p>
+              <button class="bg-cyan-500 hover:bg-cyan-600 text- rounded-xl h-8 px-3 text-lg font-book w-24">
+                Entrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Investigación -->
+    <section id="investigacion" class="py-16 bg-beige">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-center text-blue-900 mb-12">INVESTIGACIÓN</h2>
+        <div class="flex flex-wrap justify-center gap-8">
+          <!-- Card 1 -->
+          <div class="bg-blue-900 rounded-2xl shadow-lg flex flex-col w-full sm:w-72 h-[26rem]">
+            <div class="relative">
+              <div class="w-full h-36 overflow-hidden rounded-t-2xl">
+                <img src="./assets/Edited/image_4.webp" class="object-cover object-bottom w-full h-full scale-[200%]" />
+              </div>
+
+              <span class="absolute top-3 right-3 bg-yellow-400 text-gray-900 text-xs font-medium px-3 py-1 rounded-full">
+                NUEVO
+              </span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="text-lg font-medium text-white mb-2">
+                Programas de apoyo entre pares para mujeres con diabetes gestacional
+              </h3>
+              <p class="text-sm font-book text-gray-300 mb-4 flex-1">
+                Resultados preliminares de un programa piloto que muestra mejoras en bienestar emocional y control
+                metabólico.
+              </p>
+              <button
+                class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 w-24 rounded-md h-8 px-3 text-md font-book">
+                Leer más
+              </button>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-blue-900 rounded-2xl shadow-lg flex flex-col w-full sm:w-72 h-[26rem]">
+            <div class="relative">
+              <div class="w-full h-36 overflow-hidden rounded-t-2xl">
+                <img src="./assets/Edited/image_3.webp" alt="Barreras de género en el acceso a tecnologías"
+                  class="object-cover object-bottom w-full h-full scale-[200%]" />
+              </div>
+
+              <span class="absolute top-3 right-3 bg-yellow-400 text-gray-900 text-xs font-medium px-3 py-1 rounded-full">
+                NUEVO
+              </span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="text-lg font-medium text-white mb-2">
+                Barreras de género en el acceso a tecnologías
+              </h3>
+              <p class="text-sm font-book text-gray-300 mb-4 flex-1">
+                Análisis de disparidades en acceso a bombas de insulina y monitoreo continuo en Latinoamérica.
+              </p>
+              <button
+                class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 w-24 rounded-md h-8 px-3 text-md font-book">
+                Leer más
+              </button>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-blue-900 rounded-2xl shadow-lg flex flex-col w-full sm:w-72 h-[26rem]">
+            <div class="relative">
+              <div class="w-full h-36 overflow-hidden rounded-t-2xl">
+                <img src="./assets/Edited/image_2.webp"
+                  alt="Impacto de la carga en el control de mujeres con diabetes tipo 2"
+                  class="object-cover object-bottom sm:object-[50%_140%] w-full h-full scale-[300%] md:scale-[220%]" />
+              </div>
+
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="text-lg font-medium text-white mb-2">
+                Impacto de la carga en el control de mujeres con diabetes tipo 2
+              </h3>
+              <p class="text-sm font-book text-gray-300 mb-4 flex-1">
+                Exploración de cómo el trabajo doméstico no remunerado afecta el autocuidado y los resultados clínicos.
+              </p>
+              <button
+                class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 w-24 rounded-md h-8 px-3 text-md font-book">
+                Leer más
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
 
-    html {
-      scroll-behavior: smooth !important;
-    }
+    <!-- Tips & Blog -->
+    <section id="tips-blog" class="py-16 bg-blue-gradient">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-center text-beige mb-12">TIPS & BLOG
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-beige rounded-lg shadow-md overflow-hidden flex flex-col h-[24rem] md:h-[28rem] xl:h-[24rem]">
+            <img src="./assets/Edited/image_5.webp" alt="Planificación de comidas que respetan tu tiempo y salud"
+              class="w-full h-36 object-cover object-bottom">
+            <div class="p-6 flex-1 flex flex-col">
+              <span
+                class="inline-block mb-2 px-3 py-1 border border-cyan-500 text-cyan-500 text-xs font-medium rounded-full w-fit">Nutrición</span>
+              <h3 class="text-xl font-medium text-gray-900 mb-2">Planificación de comidas que respetan tu tiempo y salud:
+                versión fácil</h3>
+              <p class="text-gray-500 text-xs mb-4">Por Dra. Martínez &middot; 15 Abr 2025</p>
+              <button
+                class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 rounded-xl h-10 px-4 text-sm font-book w-fit">Leer
+                artículo</button>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-beige rounded-lg shadow-md overflow-hidden flex flex-col h-[28rem] xl:h-[24rem]">
+            <img src="./assets/Edited/image_6.webp" alt="Autocuidado sin culpa"
+              class="w-full h-36 object-cover object-bottom">
+            <div class="p-6 flex-1 flex flex-col">
+              <span
+                class="inline-block mb-2 px-3 py-1 border border-cyan-500 text-cyan-500 text-xs font-medium rounded-full w-fit">Bienestar</span>
+              <h3 class="text-xl font-medium text-gray-900 mb-2">Autocuidado sin culpa: priorizar tu salud no es egoísmo
+              </h3>
+              <p class="text-gray-500 text-xs mb-4">Por Psic. Rodríguez &middot; 28 Mar 2025</p>
+              <button
+                class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 rounded-xl h-10 px-4 text-sm font-book w-fit">Leer
+                artículo</button>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-beige rounded-lg shadow-md overflow-hidden flex flex-col h-[28rem] xl:h-[24rem]">
+            <img src="./assets/Edited/image_7.webp" alt="Cómo comunicar efectivamente a tu médico"
+              class="w-full h-36 object-cover object-bottom">
+            <div class="p-6 flex-1 flex flex-col">
+              <span
+                class="inline-block mb-2 px-3 py-1 border border-cyan-500 text-cyan-500 text-xs font-medium rounded-full w-fit">Tratamiento</span>
+              <h3 class="text-xl font-medium text-gray-900 mb-2">Cómo comunicar efectivamente tus necesidades a tu médico
+              </h3>
+              <p class="text-gray-500 text-xs mb-4">Por Lic. Gómez &middot; 10 Mar 2025</p>
+              <button
+                class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 rounded-xl h-10 px-4 text-sm font-book w-fit">Leer
+                artículo</button>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="bg-beige rounded-lg shadow-md overflow-hidden flex flex-col h-[28rem] xl:h-[24rem]">
+            <img src="./assets/Edited/image_8.webp" alt="Redistribución de tareas en familia"
+              class="w-full h-36 object-cover object-bottom">
+            <div class="p-6 flex-1 flex flex-col">
+              <span
+                class="inline-block mb-2 px-3 py-1 border border-cyan-500 text-cyan-500 text-xs font-medium rounded-full w-fit">Familia</span>
+              <h3 class="text-xl font-medium text-gray-900 mb-2">Redistribución de tareas: involucrar a la familia en tu
+                cuidado</h3>
+              <p class="text-gray-500 text-xs mb-4">Por Soc. Vásquez &middot; 22 Feb 2025</p>
+              <button
+                class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 rounded-xl h-10 px-4 text-sm font-book w-fit">Leer
+                artículo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    body {
-      min-width: 243px !important;
-    }
-  </style>
-</head>
 
-<body class="flex flex-col min-h-screen pt-20">
-  <!-- Navigation -->
-  <header class="fixed top-0 left-0 w-full bg-blue-900 text-white font-medium z-50 h-20">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center h-full">
-      <img src="./assets/Logo_Resignificativa_1.svg" alt="Logo" class="h-16" />
+    <!-- Nuestros Aliados -->
+    <section id="aliados" class="py-16 bg-beige">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-12 text-blue-900">NUESTROS ALIADOS</h2>
+        <div class="flex flex-wrap justify-center items-center gap-12 text-gray-700">
+          <img src="./assets/Logo_Malvestida.svg" class="w-[15rem]">
+          <img src="./assets/Logo_BreakT.svg" class="w-[15rem]">
+          <img src="./assets/Logo_AMD.svg" class="w-[15rem]">
+        </div>
+      </div>
+    </section>
 
-      <nav id="desktop-nav" class="hidden md:flex space-x-6">
-        <a href="#inicio" data-target="inicio" class="nav-link text-md transition">Inicio</a>
-        <a href="#foros" data-target="foros" class="nav-link text-md transition">Foros</a>
-        <a href="#investigacion" data-target="investigacion" class="nav-link text-md transition">Investigación</a>
-        <a href="#tips-blog" data-target="tips-blog" class="nav-link text-md transition">
-          Tips <span class="font-sans">&</span> Blog
-        </a>
-        <a href="#aliados" data-target="aliados" class="nav-link text-md transition">Aliados</a>
-        <a href="#newsletter" data-target="newsletter" class="nav-link text-md transition">Newsletter</a>
-      </nav>
-      <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+    <!-- Newsletter -->
+    <section id="newsletter" class="py-12 bg-teal text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-semibold mb-4 text-white">ÚNETE A NUESTRA COMUNIDAD</h2>
+        <p class="mb-6 text-white font-book max-w-2xl mx-auto">Recibe información actualizada sobre diabetes y género,
+          invitaciones
+          a eventos y recursos exclusivos para nuestros suscriptores.</p>
+         <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+      <input
+        id="email-input"
+        type="email"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        placeholder="Tu correo electrónico"
+        class="font-book sm:flex-1 h-10 rounded-md border border-white/40 bg-white px-3 text-blue-900 placeholder-blue-900/50 focus:ring-2 focus:ring-offset-2"
+      />
+      <button
+        id="subscribe-button"
+        class="bg-white text-teal hover:bg-gray-100 rounded-md h-10 px-4 text-md font-medium"
+      >
+        Suscríbete
       </button>
     </div>
-    <div id="mobile-menu" class="mobile-menu bg-blue-900 px-4 pb-4 md:hidden">
-      <hr class="border-beige mb-4" />
-      <nav class="flex flex-col mb-2 space-y-3">
-        <a href="#inicio" class="text-lg hover:text-yellow-400 transition">Inicio</a>
-        <a href="#foros" class="text-lg hover:text-yellow-400 transition">Foros</a>
-        <a href="#investigacion" class="text-lg hover:text-yellow-400 transition">Investigación</a>
-        <a href="#tips-blog" class="text-lg hover:text-yellow-400 transition">Tips <span class="font-sans">&</span>
-          Blog</a>
-        <a href="#aliados" class="text-lg hover:text-yellow-400 transition">Aliados</a>
-        <a href="#newsletter" class="text-lg hover:text-yellow-400 transition">Newsletter</a>
-      </nav>
-    </div>
-  </header>
+    <p id="subscription-message" class="text-xs mt-4 font-book text-white/70"></p>
+    <p class="text-xs mt-4 font-book text-white/70">
+      Al suscribirte aceptas nuestro <a href="/aviso-legal.html" class="underline">aviso legal</a>.
+    </p>
+  </div>
+    </section>
 
-  <!-- Hero Section -->
-  <section id="inicio" class="text-white py-16 relative">
-    <div class="absolute inset-0 overflow-hidden">
-      <img src="./assets/Edited/image-hero-section.webp" alt="Hero"
-        class="w-full h-full object-cover object-[80%_10%] scale-110 md:scale-100 md:object-[90%_70%] lg:object-[90%_90%]" />
-    </div>
-    <div class="absolute inset-0 bg-gray-800/50 lg:bg-transparent"></div>
-    <div class="container mx-auto px-4 flex flex-col md:flex-row items-start">
-      <div class="md:w-1/2 z-10 md:ps-12 xxl:ps-4">
-        <div class="md:block md:w-[30rem]">
-          <div class="md:leading-[3.7rem]">
-            <h1 class="font-semibold text-[29.5px] sm:text-[36px] md:text-[50px] font-bold">LA CONVERSACIÓN</h1>
-            <h1 class="font-semibold text-[34px] sm:text-[41.5px] md:text-[57.5px] font-bold tracking-normal">CONTINÚA
-              AQUÍ
-            </h1>
-          </div>
-          <h2
-            class="font-semibold text-[20.5px] sm:text-[25px] md:text-[34.5px] font-bold text-yellow-400 md:-mt-[10px] mb-4">
-            SIGAMOS SANANDO JUNTAS
-          </h2>
-          <p class="font-book text-[13px] md:text-[22px] italic text-cyan-500 mb-8"><span
-              class="font-sans">#</span>ReunidosParaSanar <span class="font-sans">#</span>ReSignificandoLaDiabetes</p>
-          <p class="font-book mb-6 w-[18rem] sm:w-[20.5rem] md:text-[22px] xs:w-[20rem] md:w-full leading-[1.7rem]">
-            Creamos espacios de diálogo para visibilizar y
-            abordar el impacto diferenciado
-            de la diabetes en las mujeres y sus roles sociales.</p>
-          <div class="flex flex-wrap gap-3 font-book">
-            <button class="bg-cyan-500 hover:bg-cyan-600 text-black rounded-md h-10 px-4 text-sm">Únete al
-              diálogo</button>
-            <button
-              class="border-[3px] border-cyan-500 hover:bg-white/20 text-cyan-500 rounded-md h-10 px-4 text-sm">Investigación</button>
-          </div>
+    <!-- Footer -->
+    <footer class="py-12 bg-blue-900 text-white">
+      <div class="container mx-auto px-8 grid md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="font-medium mb-4">Acerca de Resignificativa</h3>
+          <p class="text-sm text-gray-300">Transformando la narrativa sobre diabetes y roles de género a través del
+            diálogo, la investigación y la acción colectiva.</p>
         </div>
-
-
-      </div>
-      <div class="md:w-1/2 mt-8 md:mt-0">
-      </div>
-    </div>
-  </section>
-
-  <!-- Quienes Somos -->
-  <section id="quienes-somos" class="py-16 bg-beige">
-    <div class="container mx-auto px-8 text-blue">
-      <h2 class="text-3xl text-blue-900 font-semibold text-center mb-12">QUIÉNES SOMOS</h2>
-      <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0">
-        <div class="md:w-1/4 flex justify-center">
-          <div class="bg-blue-900 rounded-full p-4 w-36 md:w-44 h-auto flex items-center justify-center">
-            <img src="./assets/Logo_Resignificativa_2.svg">
-
-          </div>
+        <div>
+          <h3 class="font-medium mb-4">Enlaces rápidos</h3>
+          <ul class="space-y-2 text-sm text-gray-300 font-book">
+            <li><a href="#inicio" class="hover:text-teal">Inicio</a></li>
+            <li><a href="#investigacion" class="hover:text-teal">Investigación</a></li>
+            <li><a href="#tips-blog" class="hover:text-teal">Tips & Blog</a></li>
+            <li><a href="#aliados" class="hover:text-teal">Aliados</a></li>
+             <li><a href="/aviso-legal.html" class="hover:text-teal">Aviso legal</a></li>
+          </ul>
         </div>
-        <div class="md:w-3/4 space-y-4 font-book max-w-2xl md:text-lg leading-[24px]">
-          <p>Somos un espacio que nació del dolor, pero también del deseo profundo de sanar juntas. Resignificativa no
-            es solo un evento: es una comunidad viva de mujeres con diabetes tipo 1 que se reconocen, se escuchan y se
-            acompañan. Aquí todo tiene valor. Nos mueve la necesidad de ser vistas no solo como pacientes, sino como
-            mujeres completas, con ciclos, emociones, preguntas y luchas que merecen espacio y respeto.</p>
-
-          <p>Este lugar sigue latiendo más allá del evento. Es una red que crece con cada conversación, con cada
-            experiencia compartida. Un refugio digital donde podemos seguir resignificando lo que hemos vivido,
-            reaprender lo que merecemos y recordar que no estamos solas.</p>
-
-          <p class="font-medium">Porque cuando nos entendemos, sanamos juntas.</p>
-
+        <div>
+          <h3 class="font-medium mb-4">Contacto</h3>
+          <ul class="space-y-2 text-sm text-gray-300 font-book">
+            <li><a href="mailto:info@resignificativa.social" class="hover:text-teal">info@resignificativa.social</a></li>
+            <li><span href="tel:+1234567890" class="hover:text-teal">+521 346 5534</span></li>
+            <li><span href="#" class="hover:text-teal">Av. Madero y Gonzalitos, Mitras Centro, 64220, Ciudad de México.</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-medium mb-4">Síguenos</h3>
+          <ul class="space-y-2 text-sm text-gray-300 font-book">
+            <li><a href="https://www.facebook.com/" class="hover:text-teal">Facebook</a></li>
+            <li><a href="https://www.instagram.com/" class="hover:text-teal">Instagram</a></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Foros de Diálogo -->
-  <section id="foros" class="py-16 bg-blue-gradient">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold text-center text-beige mb-12">FOROS DE DIÁLOGO</h2>
-      <div class="flex flex-wrap justify-center text-start gap-4">
-        <!-- Card 1 -->
-        <div class="bg-beige h-80 rounded-lg shadow-2xl flex flex-col w-full sm:w-72">
-          <div class="px-6 pt-6 pb-4 flex-1 flex flex-col items-start text-center">
-            <div class="w-full">
-              <div class="bg-blue-900 p-3 rounded-full mb-4 w-16 h-16 flex items-center justify-center">
-                <img src="./assets/Ícono 1.svg" alt="">
-              </div>
-            </div>
-            <h3 class="text-xl font-medium text-blue-900 mb-2 text-start">Círculos de escucha</h3>
-            <p class="text-sm text-[#0c2731] mb-4 flex-1 text-start font-book">
-              Espacios seguros para hablar desde lo que duele, lo que pesa y lo que libera. Aquí, cada historia
-              encuentra eco y cada palabra importa.
-            </p>
-            <button class="bg-cyan-500 hover:bg-cyan-600 text- rounded-xl h-8 px-3 text-lg font-book w-24">
-              Entrar
-            </button>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="bg-beige h-80 rounded-lg shadow-2xl flex flex-col w-full sm:w-72">
-          <div class="px-6 pt-6 pb-4 flex-1 flex flex-col items-start text-center">
-            <div class="w-full">
-              <div class="bg-blue-900 p-3 rounded-full mb-4 w-16 h-16 flex items-center justify-center">
-                <img src="./assets/Ícono 2.svg" alt="">
-              </div>
-            </div>
-            <h3 class="text-xl font-medium text-blue-900 mb-2 text-start">Talleres de Poder y Conocimiento</h3>
-            <p class="text-sm text-[#0c2731] mb-4 flex-1 text-start font-book">
-              Aquí aprendemos a cuidarnos, cuestionar lo aprendido y reapropiarnos de nuestra salud desde lo que sí
-              somos.
-            </p>
-            <button class="bg-cyan-500 hover:bg-cyan-600 text- rounded-xl h-8 px-3 text-lg font-book w-24">
-              Entrar
-            </button>
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="bg-beige h-80 rounded-lg shadow-2xl flex flex-col w-full sm:w-72">
-          <div class="px-6 pt-6 pb-4 flex-1 flex flex-col items-start text-center">
-            <div class="w-full">
-              <div class="bg-blue-900 p-3 rounded-full mb-4 w-16 h-16 flex items-center justify-center">
-                <img src="./assets/Ícono 3.svg" alt="">
-              </div>
-            </div>
-            <h3 class="text-xl font-medium text-blue-900 mb-2 text-start">Voces que transforman <span
-                class="font-sans">(</span>Incidencia Colectiva<span class="font-sans">)</span>
-            </h3>
-            <p class="text-sm text-[#0c2731] mb-4 flex-1 text-start font-book">
-              Espacios para imaginar y construir cambios reales. Conversaciones que incomodan, que exigen y que
-              siembran.
-            </p>
-            <button class="bg-cyan-500 hover:bg-cyan-600 text- rounded-xl h-8 px-3 text-lg font-book w-24">
-              Entrar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Investigación -->
-  <section id="investigacion" class="py-16 bg-beige">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold text-center text-blue-900 mb-12">INVESTIGACIÓN</h2>
-      <div class="flex flex-wrap justify-center gap-8">
-        <!-- Card 1 -->
-        <div class="bg-blue-900 rounded-2xl shadow-lg flex flex-col w-full sm:w-72 h-[26rem]">
-          <div class="relative">
-            <div class="w-full h-36 overflow-hidden rounded-t-2xl">
-              <img src="./assets/Edited/image_4.webp" class="object-cover object-bottom w-full h-full scale-[200%]" />
-            </div>
-
-            <span class="absolute top-3 right-3 bg-yellow-400 text-gray-900 text-xs font-medium px-3 py-1 rounded-full">
-              NUEVO
-            </span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="text-lg font-medium text-white mb-2">
-              Programas de apoyo entre pares para mujeres con diabetes gestacional
-            </h3>
-            <p class="text-sm font-book text-gray-300 mb-4 flex-1">
-              Resultados preliminares de un programa piloto que muestra mejoras en bienestar emocional y control
-              metabólico.
-            </p>
-            <button
-              class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 w-24 rounded-md h-8 px-3 text-md font-book">
-              Leer más
-            </button>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="bg-blue-900 rounded-2xl shadow-lg flex flex-col w-full sm:w-72 h-[26rem]">
-          <div class="relative">
-            <div class="w-full h-36 overflow-hidden rounded-t-2xl">
-              <img src="./assets/Edited/image_3.webp" alt="Barreras de género en el acceso a tecnologías"
-                class="object-cover object-bottom w-full h-full scale-[200%]" />
-            </div>
-
-            <span class="absolute top-3 right-3 bg-yellow-400 text-gray-900 text-xs font-medium px-3 py-1 rounded-full">
-              NUEVO
-            </span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="text-lg font-medium text-white mb-2">
-              Barreras de género en el acceso a tecnologías
-            </h3>
-            <p class="text-sm font-book text-gray-300 mb-4 flex-1">
-              Análisis de disparidades en acceso a bombas de insulina y monitoreo continuo en Latinoamérica.
-            </p>
-            <button
-              class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 w-24 rounded-md h-8 px-3 text-md font-book">
-              Leer más
-            </button>
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="bg-blue-900 rounded-2xl shadow-lg flex flex-col w-full sm:w-72 h-[26rem]">
-          <div class="relative">
-            <div class="w-full h-36 overflow-hidden rounded-t-2xl">
-              <img src="./assets/Edited/image_2.webp"
-                alt="Impacto de la carga en el control de mujeres con diabetes tipo 2"
-                class="object-cover object-bottom sm:object-[50%_140%] w-full h-full scale-[300%] md:scale-[220%]" />
-            </div>
-
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="text-lg font-medium text-white mb-2">
-              Impacto de la carga en el control de mujeres con diabetes tipo 2
-            </h3>
-            <p class="text-sm font-book text-gray-300 mb-4 flex-1">
-              Exploración de cómo el trabajo doméstico no remunerado afecta el autocuidado y los resultados clínicos.
-            </p>
-            <button
-              class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 w-24 rounded-md h-8 px-3 text-md font-book">
-              Leer más
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
 
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('view'));
+         menu.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', () => menu.classList.remove('view'))
+  );
 
-  <!-- Tips & Blog -->
-  <section id="tips-blog" class="py-16 bg-blue-gradient">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold text-center text-beige mb-12">TIPS <span class="font-sans">&amp;</span> BLOG
-      </h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Card 1 -->
-        <div class="bg-beige rounded-lg shadow-md overflow-hidden flex flex-col h-[24rem] md:h-[28rem] xl:h-[24rem]">
-          <img src="./assets/Edited/image_5.webp" alt="Planificación de comidas que respetan tu tiempo y salud"
-            class="w-full h-36 object-cover object-bottom">
-          <div class="p-6 flex-1 flex flex-col">
-            <span
-              class="inline-block mb-2 px-3 py-1 border border-cyan-500 text-cyan-500 text-xs font-medium rounded-full w-fit">Nutrición</span>
-            <h3 class="text-xl font-medium text-gray-900 mb-2">Planificación de comidas que respetan tu tiempo y salud:
-              versión fácil</h3>
-            <p class="text-gray-500 text-xs mb-4">Por Dra. Martínez &middot; 15 Abr 2025</p>
-            <button
-              class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 rounded-xl h-10 px-4 text-sm font-book w-fit">Leer
-              artículo</button>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="bg-beige rounded-lg shadow-md overflow-hidden flex flex-col h-[28rem] xl:h-[24rem]">
-          <img src="./assets/Edited/image_6.webp" alt="Autocuidado sin culpa"
-            class="w-full h-36 object-cover object-bottom">
-          <div class="p-6 flex-1 flex flex-col">
-            <span
-              class="inline-block mb-2 px-3 py-1 border border-cyan-500 text-cyan-500 text-xs font-medium rounded-full w-fit">Bienestar</span>
-            <h3 class="text-xl font-medium text-gray-900 mb-2">Autocuidado sin culpa: priorizar tu salud no es egoísmo
-            </h3>
-            <p class="text-gray-500 text-xs mb-4">Por Psic. Rodríguez &middot; 28 Mar 2025</p>
-            <button
-              class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 rounded-xl h-10 px-4 text-sm font-book w-fit">Leer
-              artículo</button>
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="bg-beige rounded-lg shadow-md overflow-hidden flex flex-col h-[28rem] xl:h-[24rem]">
-          <img src="./assets/Edited/image_7.webp" alt="Cómo comunicar efectivamente a tu médico"
-            class="w-full h-36 object-cover object-bottom">
-          <div class="p-6 flex-1 flex flex-col">
-            <span
-              class="inline-block mb-2 px-3 py-1 border border-cyan-500 text-cyan-500 text-xs font-medium rounded-full w-fit">Tratamiento</span>
-            <h3 class="text-xl font-medium text-gray-900 mb-2">Cómo comunicar efectivamente tus necesidades a tu médico
-            </h3>
-            <p class="text-gray-500 text-xs mb-4">Por Lic. Gómez &middot; 10 Mar 2025</p>
-            <button
-              class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 rounded-xl h-10 px-4 text-sm font-book w-fit">Leer
-              artículo</button>
-          </div>
-        </div>
-        <!-- Card 4 -->
-        <div class="bg-beige rounded-lg shadow-md overflow-hidden flex flex-col h-[28rem] xl:h-[24rem]">
-          <img src="./assets/Edited/image_8.webp" alt="Redistribución de tareas en familia"
-            class="w-full h-36 object-cover object-bottom">
-          <div class="p-6 flex-1 flex flex-col">
-            <span
-              class="inline-block mb-2 px-3 py-1 border border-cyan-500 text-cyan-500 text-xs font-medium rounded-full w-fit">Familia</span>
-            <h3 class="text-xl font-medium text-gray-900 mb-2">Redistribución de tareas: involucrar a la familia en tu
-              cuidado</h3>
-            <p class="text-gray-500 text-xs mb-4">Por Soc. Vásquez &middot; 22 Feb 2025</p>
-            <button
-              class="mt-auto bg-cyan-500 hover:bg-cyan-600 text-blue-900 rounded-xl h-10 px-4 text-sm font-book w-fit">Leer
-              artículo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        if (!window.matchMedia('(min-width: 768px)').matches) return;
 
+        const links = document.querySelectorAll('.nav-link');
+        const sections = Array.from(document.querySelectorAll('section[id], header[id], footer[id]'));
 
-  <!-- Nuestros Aliados -->
-  <section id="aliados" class="py-16 bg-beige">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-12 text-blue-900">NUESTROS ALIADOS</h2>
-      <div class="flex flex-wrap justify-center items-center gap-12 text-gray-700">
-        <img src="./assets/Logo_Malvestida.svg" class="w-[15rem]">
-        <img src="./assets/Logo_BreakT.svg" class="w-[15rem]">
-        <img src="./assets/Logo_AMD.svg" class="w-[15rem]">
-      </div>
-    </div>
-  </section>
+        function highlightCurrent() {
+          const scrollPos = window.scrollY + window.innerHeight / 2;
+          let currentId = sections[0].id;
 
-  <!-- Newsletter -->
-  <section id="newsletter" class="py-12 bg-teal text-center">
-    <div class="container mx-auto px-4">
-      <h2 class="text-2xl font-semibold mb-4 text-white">ÚNETE A NUESTRA COMUNIDAD</h2>
-      <p class="mb-6 text-white font-book max-w-2xl mx-auto">Recibe información actualizada sobre diabetes y género,
-        invitaciones
-        a eventos y recursos exclusivos para nuestros suscriptores.</p>
-      <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
-        <input type="email" placeholder="Tu correo electrónico"
-          class="font-book sm:flex-1 h-10 rounded-md border border-white/40 bg-white px-3 text-blue-900 placeholder-blue-900/50 focus:ring-2 focus:ring-offset-2" />
-        <button
-          class="bg-white text-teal hover:bg-gray-100 rounded-md h-10 px-4 text-md font-medium">Suscríbete</button>
-      </div>
-      <p class="text-xs mt-4 font-book text-white/70">Al suscribirte aceptas nuestra política de privacidad y términos
-        de uso.</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-12 bg-blue-900 text-white">
-    <div class="container mx-auto px-8 grid md:grid-cols-4 gap-8">
-      <div>
-        <h3 class="font-medium mb-4">Acerca de Resignificativa</h3>
-        <p class="text-sm text-gray-300">Transformando la narrativa sobre diabetes y roles de género a través del
-          diálogo, la investigación y la acción colectiva.</p>
-      </div>
-      <div>
-        <h3 class="font-medium mb-4">Enlaces rápidos</h3>
-        <ul class="space-y-2 text-sm text-gray-300 font-book">
-          <li><a href="#inicio" class="hover:text-teal">Inicio</a></li>
-          <li><a href="#investigacion" class="hover:text-teal">Investigación</a></li>
-          <li><a href="#tips-blog" class="hover:text-teal">Tips <span class="font-sans">&</span> Blog</a></li>
-          <li><a href="#aliados" class="hover:text-teal">Aliados</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-medium mb-4">Contacto</h3>
-        <ul class="space-y-2 text-sm text-gray-300 font-book">
-          <li><a href="mailto:info@resignificativa.org" class="hover:text-teal">info<span
-                class="font-sans">@</span>resignificativa.org</a></li>
-          <li><a href="tel:+1234567890" class="hover:text-teal"><span class="font-sans">+</span>123 356 7890</a></li>
-          <li><a href="#" class="hover:text-teal">Av. Principal 123, Ciudad</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-medium mb-4">Síguenos</h3>
-        <ul class="space-y-2 text-sm text-gray-300 font-book">
-          <li><a href="#" class="hover:text-teal">Facebook</a></li>
-          <li><a href="#" class="hover:text-teal">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-       const btn = document.getElementById('mobile-menu-button');
-      const menu = document.getElementById('mobile-menu');
-      btn.addEventListener('click', () => menu.classList.toggle('view'));
-
-      if (!window.matchMedia('(min-width: 768px)').matches) return;
-
-      const links = document.querySelectorAll('.nav-link');
-      const sections = Array.from(document.querySelectorAll('section[id], header[id], footer[id]'));
-
-      function highlightCurrent() {
-        const scrollPos = window.scrollY + window.innerHeight / 2;
-        let currentId = sections[0].id;
-
-        for (const sec of sections) {
-          if (sec.offsetTop <= scrollPos) {
-            currentId = sec.id;
+          for (const sec of sections) {
+            if (sec.offsetTop <= scrollPos) {
+              currentId = sec.id;
+            }
           }
+
+          links.forEach(link => {
+            if (link.dataset.target === currentId) {
+              link.classList.add('text-yellow-400', 'font-semibold');
+            } else {
+              link.classList.remove('text-yellow-400', 'font-semibold');
+            }
+          });
         }
 
         links.forEach(link => {
-          if (link.dataset.target === currentId) {
-            link.classList.add('text-yellow-400', 'font-semibold');
-          } else {
-            link.classList.remove('text-yellow-400', 'font-semibold');
-          }
-        });
-      }
+          link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetId = link.dataset.target;
+            const sec = document.getElementById(targetId);
+            if (!sec) return;
 
-      links.forEach(link => {
-        link.addEventListener('click', e => {
-          e.preventDefault();
-          const targetId = link.dataset.target;
-          const sec = document.getElementById(targetId);
-          if (!sec) return;
+            const top = sec.offsetTop - (window.innerHeight - sec.offsetHeight) / 2;
 
-          const top = sec.offsetTop - (window.innerHeight - sec.offsetHeight) / 2;
-
-          window.scrollTo({
-            top: Math.max(0, top),
-            behavior: 'smooth'
+            window.scrollTo({
+              top: Math.max(0, top),
+              behavior: 'smooth'
+            });
           });
         });
+
+        highlightCurrent();
+        window.addEventListener('scroll', highlightCurrent);
+
+
       });
+    </script>
 
-      highlightCurrent();
-      window.addEventListener('scroll', highlightCurrent);
+    <script>
+  const btn = document.getElementById('subscribe-button');
+  const input = document.getElementById('email-input');
+  const msg  = document.getElementById('subscription-message');
 
-     
+  function showTempMessage(text) {
+    msg.textContent = text;
+    setTimeout(() => msg.textContent = '', 3000);
+  }
+
+  async function fetchIPAndLocation() {
+    try {
+      const res = await fetch('https://ipapi.co/json/');
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      return {
+        ip: data.ip,
+        location: `${data.city}, ${data.region}, ${data.country_name}`
+      };
+    } catch {
+      return { ip: 'desconocida', location: 'desconocida' };
+    }
+  }
+
+  btn.addEventListener('click', async () => {
+    if (!input.checkValidity()) {
+      showTempMessage('Por favor ingresa un correo válido.');
+      return;
+    }
+
+    btn.disabled = true;
+    showTempMessage('Enviando…');
+
+    const email = input.value.trim();
+    const now = new Date();
+    const fecha = now.toLocaleDateString('es-MX', {
+      timeZone: 'America/Mexico_City',
+      day: '2-digit', month: '2-digit', year: 'numeric'
     });
-  </script>
+    const hora = now.toLocaleTimeString('es-MX', {
+      timeZone: 'America/Mexico_City',
+      hour: '2-digit', minute: '2-digit', hour12: false
+    });
 
-</body>
+    const { ip, location } = await fetchIPAndLocation();
 
+    try {
+      const res = await fetch(
+        'https://resignificativa-default-rtdb.firebaseio.com/subscribers.json',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, fecha, hora, ip, location })
+        }
+      );
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+
+      showTempMessage('Correo recibido. ¡Gracias por suscribirte!');
+      input.value = '';
+    } catch (e) {
+      console.error(e);
+      showTempMessage('Error al suscribir. Intenta de nuevo.');
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+
+  </body>
 </html>
